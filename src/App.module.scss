@@ -1,20 +1,3 @@
-$widthBegin: 1000px;
-$widthEnd: 1400px;
-$heightBegin: 200px;
-$heightEnd: 400px;
-$second: 0.5s;
-$effect: ease-out;
-
-@mixin position {
-  top: calc(50vh - ($heightEnd));
-  left: calc(50vw - ($widthEnd/2));
-}
-@mixin modalBody($width, $heigth) {
-  width: $width;
-  height: $heigth;
-  padding: 20px;
-  background-color: white;
-}
 .component {
   display: flex;
   position: relative;
@@ -23,62 +6,24 @@ $effect: ease-out;
   flex-direction: column;
   background-color: rgb(170, 170, 235);
   padding: 20px;
+  justify-content: flex-end;
 }
 .modal {
   position: relative;
   display: flex;
-  width: $widthBegin;
-  height: $heightBegin;
   border-radius: 10px;
   background-color: white;
   margin-bottom: 20px;
   justify-content: flex-end;
   padding: 20px;
   box-sizing: border-box;
-  &Full {
-    display: flex;
-    justify-content: flex-end;
-    position: absolute;
-    width: $widthEnd;
-    border-radius: 10px;
-    overflow: hidden;
-    background-color: transparent;
-    box-sizing: border-box;
-    z-index: 1;
+  .button {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: grey;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
   }
-}
-.button {
-  padding: 0;
-  margin: 0;
-  border: none;
-  background-color: grey;
-  border-radius: 5px;
-  width: 40px;
-  height: 40px;
-}
-.enter {
-  top: 0;
-  left: 0;
-  @include modalBody($widthBegin, $heightBegin);
-  background-color: transparent;
-}
-.enterActive {
-  @include position();
-  @include modalBody($widthEnd, $heightEnd);
-  transition: all $second $effect;
-}
-.enterDone {
-  @include position();
-  @include modalBody($widthEnd, $heightEnd);
-}
-.exit {
-  @include position();
-  @include modalBody($widthEnd, $heightEnd);
-}
-.exitActive {
-  top: 0;
-  left: 0;
-  @include modalBody($widthBegin, $heightBegin);
-  background-color: transparent;
-  transition: all $second $effect;
 }
